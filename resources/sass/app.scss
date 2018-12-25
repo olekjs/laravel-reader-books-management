@@ -1,0 +1,37 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.clipboard-photo-settings {
+    max-width: 370px;
+    max-height: 370px;
+}
+@media (max-width: 1199.98px) {
+    .clipboard-photo-settings {
+        max-width: 210px;
+        max-height: 210px;
+    }
+}
+@media (max-width: 991.98px) {
+    .clipboard-photo-settings {
+        max-width: 210px;
+        max-height: 210px;
+    }
+}
+@media (max-width: 575.98px) { 
+    .clipboard-photo-settings {
+        max-width: 200px;
+        max-height: 200px;
+    }
+}
