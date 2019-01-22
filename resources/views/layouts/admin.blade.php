@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Świat czytania @yield('title')</title>
+    <title>Panel Administratora @yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -30,15 +30,12 @@
             </div>
         @else
             <nav class="navbar navbar-light bg-white">
-            <a href="{{ route('home') }}" class="navbar-brand">
-                <h3>Świat czytania</h3>
+            <a href="{{ route('admin.home') }}" class="navbar-brand">
+                <h3>Panel Administratora</h3>
             </a>
                 <form class="form-inline">
                     <div class="header-buttons">
                         <a href="{{ route('profile.index') }}" class="btn btn-primary">Twój profil</a>
-                        @if(Auth::user()->role == 1 || Auth::user()->role ==2)
-                            <a href="{{ route('admin.home') }}" class="btn btn-primary">Panel administratora</a>
-                        @endif()
                         <a href="{{ route('logout') }}" class="btn btn-primary">Wyloguj się</a>
                     </div>
                 </form>
@@ -51,23 +48,23 @@
                     <div class="col-md-3">
                         <div class="card gedf-card">
                             <div class="card-body">
-                                <h5 class="card-title">Witaj, {{ Auth::user()->profile->full_name }}</h5>
-                                <p>
-                                    <span class="fa fa-user" aria-hidden="true"></span>
-                                    <a href="{{ route('profile.index') }}">Twój profil</a>
-                                </p>
-                                <p>
-                                    <span class="fa fa-home" aria-hidden="true"></span>
-                                    <a href="{{ route('home') }}">Aktualności</a>
-                                </p>
-                                <p>
-                                    <span class="fa fa-search" aria-hidden="true"></span>
-                                    <a href="{{ route('search.index') }}">Wyszukiwarka książek</a>
-                                </p>
-                                <p>
-                                    <span class="fa fa-folder-open" aria-hidden="true"></span>
-                                    <a href="{{ route('clipboard.index') }}">Schowek</a>
-                                </p>
+                                <h5 class="card-title">Witaj, {{ Auth::user()->profile->full_name }} (administrator)</h5>
+                                @if(Auth::user()->role == 1)
+                                    <p>
+                                        <span class="fa fa-edit" aria-hidden="true"></span>
+                                        <a href="{{ route('admin.book.index') }}">Edytuj książki</a>
+                                    </p>
+                                    <p>
+                                        <span class="fa fa-adn" aria-hidden="true"></span>
+                                        <a href="{{ route('profile.index') }}">Zarządzaj reklamami</a>
+                                    </p>
+                                @endif
+                                @if(Auth::user()->role == 1 || Auth::user()->role == 2)
+                                    <p>
+                                        <span class="fa fa-book" aria-hidden="true"></span>
+                                        <a href="{{ route('profile.index') }}">Wypełniaj książki</a>
+                                    </p>
+                                @endif
                             </div>
                         </div>
                     </div>

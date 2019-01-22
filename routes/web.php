@@ -21,10 +21,24 @@ Route::middleware('auth')->group(function () {
         Route::get('book/{title}', 'BookController@read')->name('index');
     });
 
-    Route::namespace('Api')->group(function () {
+    Route::namespace ('Api')->group(function () {
         Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
             Route::post('addToCurrentlyRead', 'MainController@addToCurrentlyRead');
             Route::post('addToClipboard', 'MainController@addToClipboard');
+        });
+    });
+
+    Route::middleware('admin')->group(function () {
+
+        Route::namespace ('Admin')->group(function () {
+
+            Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+                Route::get('', 'HomeController@index')->name('home');
+
+                Route::group(['prefix' => 'book', 'as' => 'book.'], function () {
+                    Route::get('', 'BookController@index')->name('index');
+                });
+            });
         });
     });
 });
