@@ -66,6 +66,7 @@
                         <h4>Statystyki</h4>
                         <p>{{ this.statistics.accountDays }} dni na Świat czytania</p>
                         <p>{{ this.statistics.readBooks }} przeczytane książki</p>
+                        <p>{{ this.statistics.postedPosts }} opublikowanych postów</p>
                     </div>
                 </div>
             </div>

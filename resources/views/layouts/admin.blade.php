@@ -49,20 +49,14 @@
                         <div class="card gedf-card">
                             <div class="card-body">
                                 <h5 class="card-title">Witaj, {{ Auth::user()->profile->full_name }} (administrator)</h5>
-                                @if(Auth::user()->role == 1)
+                                @if(Auth::user()->role == 1 || Auth::user()->role == 2)
                                     <p>
-                                        <span class="fa fa-edit" aria-hidden="true"></span>
-                                        <a href="{{ route('admin.book.index') }}">Edytuj książki</a>
+                                        <span class="fa fa-book" aria-hidden="true"></span>
+                                        <a href="{{ route('admin.book.index') }}">Zarządzaj książkami</a>
                                     </p>
                                     <p>
                                         <span class="fa fa-adn" aria-hidden="true"></span>
                                         <a href="{{ route('profile.index') }}">Zarządzaj reklamami</a>
-                                    </p>
-                                @endif
-                                @if(Auth::user()->role == 1 || Auth::user()->role == 2)
-                                    <p>
-                                        <span class="fa fa-book" aria-hidden="true"></span>
-                                        <a href="{{ route('profile.index') }}">Wypełniaj książki</a>
                                     </p>
                                 @endif
                             </div>

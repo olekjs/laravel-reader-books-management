@@ -11,6 +11,7 @@ Route::namespace('Api')->group(function () {
 	Route::post('/saveNotes', 'MainController@saveNotes');
 	Route::post('/saveBookmark', 'MainController@saveBookmark');
 	Route::post('/saveProfile', 'MainController@saveProfile');
+	Route::post('/publishPost', 'MainController@publishPost');
 	Route::post('/saveAsRead', 'MainController@saveAsRead');
 	Route::post('/saveAsUnRead', 'MainController@saveAsUnRead');
 	Route::post('/deleteFromBookmark', 'MainController@deleteFromBookmark');

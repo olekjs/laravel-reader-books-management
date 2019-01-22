@@ -31,6 +31,10 @@
                                         <p>Liczba stron: {{ $book->number_pages }}</p>
                                     </div>
                                 </div>
+                                <p>
+                                	<a class="btn btn-primary">Edytuj książkę</a>
+                                	<a class="btn btn-danger">Usuń książkę</a>
+                                </p>
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -19,6 +20,7 @@ class ProfileController extends Controller
 
         return view('profile.index', [
             'user' => $user,
+            'posts' => Post::where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(10),
         ]);
     }
 

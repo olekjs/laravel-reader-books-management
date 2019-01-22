@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\PublishPostRequest;
 use App\Http\Requests\Clipboard\UpdateBookmarkRequest;
 use App\Http\Requests\Clipboard\UpdateNotesRequest;
 use App\Http\Requests\Profile\UpdateRequest;
 use App\Models\Book;
+use App\Models\Post;
 use App\Models\Clipboard;
 use App\Models\Profile;
 use Illuminate\Http\Request;
@@ -56,6 +58,17 @@ class MainController extends Controller
         ];
 
         Profile::where('user_id', $data['user_id'])->update($data);
+    }
+
+    public function publishPost(PublishPostRequest $request)
+    {
+        $data = [
+            'user_id' => $request->user_id,
+            'content' => $request->content,
+            'status'  => $request->status,
+        ];
+
+        Post::create($data);
     }
 
     public function saveAsRead(Request $request)

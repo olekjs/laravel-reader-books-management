@@ -19,6 +19,7 @@ import Notifications from 'vue-notification'
 Vue.component('search-book', require('./components/SearchBook.vue'));
 Vue.component('clipboard', require('./components/Clipboard.vue'));
 Vue.component('profile', require('./components/Profile.vue'));
+Vue.component('wall', require('./components/Wall.vue'));
 
 Vue.use(Notifications)
 

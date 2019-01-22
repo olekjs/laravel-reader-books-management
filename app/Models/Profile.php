@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Models\Post;
 use App\Models\Clipboard;
 use Carbon\Carbon;
 
@@ -40,6 +41,7 @@ class Profile extends Model
         $data = [
             'readBooks'   => $this->getReadBooksCount(),
             'accountDays' => $this->getAccountDaysCount(),
+            'postedPosts' => $this->getPostedPostsCount(),
         ];
 
         return $data;
@@ -56,5 +58,10 @@ class Profile extends Model
         $today       = Carbon::now();
 
         return $createdDate->diffInDays($today);
+    }
+
+    private function getPostedPostsCount()
+    {
+        return Post::where('user_id', $this->user_id)->get()->count();
     }
 }
