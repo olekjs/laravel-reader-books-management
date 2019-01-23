@@ -56,7 +56,7 @@
                                     </p>
                                     <p>
                                         <span class="fa fa-adn" aria-hidden="true"></span>
-                                        <a href="{{ route('profile.index') }}">Zarządzaj reklamami</a>
+                                        <a href="{{ route('home') }}">Zarządzaj reklamami</a>
                                     </p>
                                 @endif
                             </div>

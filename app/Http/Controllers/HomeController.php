@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
-use App\Models\Clipboard;
-use Auth;
 
 class HomeController extends Controller
 {
@@ -13,8 +12,20 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function search()
+    public function searchBook()
     {
-    	return view('search.index');
+        return view('search.book');
+    }
+
+    public function searchUser(Request $request)
+    {
+        $users = Profile::where('first_name', 'LIKE', '%' . $request->value . '%')
+            ->orWhere('last_name', 'LIKE', '%' . $request->value . '%')
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
+
+        return view('search.user', [
+            'users' => $users,
+        ]);
     }
 }

@@ -14,7 +14,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::group(['prefix' => 'search', 'as' => 'search.'], function () {
-        Route::get('', 'HomeController@search')->name('index');
+        Route::get('book', 'HomeController@searchBook')->name('book');
+        Route::get('user', 'HomeController@searchUser')->name('user');
     });
 
     Route::group(['prefix' => 'read', 'as' => 'read.'], function () {

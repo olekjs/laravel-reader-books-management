@@ -30,9 +30,17 @@
             </div>
         @else
             <nav class="navbar navbar-light bg-white">
-            <a href="{{ route('home') }}" class="navbar-brand">
-                <h3>Świat czytania</h3>
-            </a>
+                <a href="{{ route('home') }}" class="navbar-brand">
+                    <h3>Świat Czytania</h3>
+                </a>
+                {{ Form::open(['route' => 'search.user', 'method' => 'GET' , 'style'=>'display:inline-block']) }}
+                <div class="input-group" style="max-width: 500px;">
+                    <div class="form-group">
+                        {{ Form::text('value', null,['placeholder' => 'Szukaj użytkownika...', 'class' => 'form-control', 'aria-label' => 'Szukaj użytkownika...', 'aria-describedby' => 'button-search']) }}
+                        {{ Form::submit('Szukaj', ['class' => 'btn btn-outline-primary', 'id' => 'button-search']) }}
+                    </div>
+                </div>
+                {{ Form::close() }}
                 <form class="form-inline">
                     <div class="header-buttons">
                         <a href="{{ route('profile.index') }}" class="btn btn-primary">Twój profil</a>
@@ -62,7 +70,7 @@
                                 </p>
                                 <p>
                                     <span class="fa fa-search" aria-hidden="true"></span>
-                                    <a href="{{ route('search.index') }}">Wyszukiwarka książek</a>
+                                    <a href="{{ route('search.book') }}">Wyszukiwarka książek</a>
                                 </p>
                                 <p>
                                     <span class="fa fa-folder-open" aria-hidden="true"></span>
