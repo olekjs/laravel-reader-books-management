@@ -13,6 +13,11 @@
 						<p>Miasto: {{ $user->city }}</p>
 						<p class="lead">Opis użytkownika</p>
 						<div>{{ $user->about_me }}</div>
+						<hr class="my-4">
+						<p>
+							<a href="" class="btn btn-primary">Pokaż profil</a>
+							<a href="" class="btn btn-primary">Dodaj do znajomych</a>
+						</p>
 					</div>
 				</div>
 			@endforeach

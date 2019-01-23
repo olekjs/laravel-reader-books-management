@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -33,8 +33,8 @@
                 <a href="{{ route('home') }}" class="navbar-brand">
                     <h3>Świat Czytania</h3>
                 </a>
-                {{ Form::open(['route' => 'search.user', 'method' => 'GET' , 'style'=>'display:inline-block']) }}
-                <div class="input-group" style="max-width: 500px;">
+                {{ Form::open(['route' => 'search.user', 'method' => 'GET', 'class' => 'form-inline']) }}
+                <div class="input-group" style="max-width: 600px;">
                     <div class="form-group">
                         {{ Form::text('value', null,['placeholder' => 'Szukaj użytkownika...', 'class' => 'form-control', 'aria-label' => 'Szukaj użytkownika...', 'aria-describedby' => 'button-search']) }}
                         {{ Form::submit('Szukaj', ['class' => 'btn btn-outline-primary', 'id' => 'button-search']) }}
