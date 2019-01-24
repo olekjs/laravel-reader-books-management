@@ -73,6 +73,7 @@
             <div class="change-view-button text-right">
                 <div class="preview-buttons" v-if="this.view == 'preview'">
                     <button class="btn btn-primary" @click="changeToEdit()">Edytuj profil</button>
+                    <a href="friend/user" class="btn btn-primary">Pokaż znajomych</a>
                 </div>
                 <div class="preview-buttons" v-else>
                     <button class="btn btn-primary" @click="saveChanges()">Zapisz</button>

@@ -22,6 +22,10 @@ Route::middleware('auth')->group(function () {
         Route::get('book/{title}', 'BookController@read')->name('index');
     });
 
+    Route::group(['prefix' => 'friend', 'as' => 'friend.'], function () {
+        Route::get('user', 'FriendController@index')->name('index');
+    });
+
     Route::namespace ('Api')->group(function () {
         Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
             Route::post('addToCurrentlyRead', 'MainController@addToCurrentlyRead');
