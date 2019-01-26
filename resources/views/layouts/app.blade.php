@@ -53,9 +53,6 @@
             </nav>
             <div class="container-fluid gedf-wrapper">
                 <div class="row">
-                    <div class="col-md-9 gedf-main">
-                        @yield('content')
-                    </div>
                     <div class="col-md-3">
                         <div class="card gedf-card">
                             <div class="card-body">
@@ -78,6 +75,9 @@
                                 </p>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-9 gedf-main">
+                        @yield('content')
                     </div>
                 </div>
             </div>

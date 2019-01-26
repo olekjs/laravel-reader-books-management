@@ -29,7 +29,7 @@
                             <h4>Dodaj książkę:</h4>
                             <a class="btn btn-outline-primary btn-lg" @click="addToCurrentlyRead()">Do schowka</a>
                             <a class="btn btn-outline-primary btn-lg" @click="addToClipboard()">Do schowka jako przeczytaną</a>
-                            <a class="btn btn-outline-primary btn-lg"  v-if="book.link_to_txt" :href="'read/book/' + book.title">Czytaj</a>
+                            <a class="btn btn-outline-primary btn-lg"  v-if="book.link_to_txt" :href="'' + book.title">Czytaj</a>
                         </p>
                     </div>
                 </div>
@@ -69,6 +69,9 @@
             }
         },
         methods: {
+            // generateSlug: function() {
+            //     return this.book.title.replace(/ /g,'-').replace(/[^\w-]+/g,'');
+            // },
             getBooks: function(){
                 axios.post('/api/getBook', {
                     title: this.searchValue,

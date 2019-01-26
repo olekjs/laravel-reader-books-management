@@ -11,6 +11,7 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
         Route::get('', 'ProfileController@index')->name('index');
+        Route::get('friends', 'ProfileController@showFriends')->name('friend');
     });
 
     Route::group(['prefix' => 'search', 'as' => 'search.'], function () {
@@ -19,11 +20,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::group(['prefix' => 'read', 'as' => 'read.'], function () {
-        Route::get('book/{title}', 'BookController@read')->name('index');
-    });
-
-    Route::group(['prefix' => 'friend', 'as' => 'friend.'], function () {
-        Route::get('user', 'FriendController@index')->name('index');
+        Route::get('', 'BookController@read')->name('index');
     });
 
     Route::namespace ('Api')->group(function () {

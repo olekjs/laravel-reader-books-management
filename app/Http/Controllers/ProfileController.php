@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\Profile;
+use App\User;
 use Auth;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -16,10 +17,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = $this->firstOrCreateProfile();
-
         return view('profile.index', [
-            'user' => $user,
+            'user'  => Auth::user()->profile,
             'posts' => Post::where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(10),
         ]);
     }
@@ -90,8 +89,10 @@ class ProfileController extends Controller
         //
     }
 
-    private function firstOrCreateProfile()
+    public function showFriends()
     {
-        return Profile::firstOrCreate(['user_id' => Auth::id()]);
+        return view('profile.friend', [
+            'friends' => Auth::user()->friends,
+        ]);
     }
 }

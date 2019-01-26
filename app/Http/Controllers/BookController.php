@@ -86,6 +86,7 @@ class BookController extends Controller
 
     public function read($title)
     {
+        dd($title);
         $book = $this->firstOrCreateBook($title);
 
         $text = file_get_contents($book->link_to_txt, true);
