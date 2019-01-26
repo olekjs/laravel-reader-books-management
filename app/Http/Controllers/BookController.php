@@ -86,10 +86,9 @@ class BookController extends Controller
 
     public function read($title)
     {
-        dd($title);
         $book = $this->firstOrCreateBook($title);
 
-        $text = file_get_contents($book->link_to_txt, true);
+        $text = file_get_contents($book[0]->link_to_txt, true);
 
         return view('read.index', [
             'book' => $book,
@@ -99,6 +98,12 @@ class BookController extends Controller
 
     private function firstOrCreateBook($title)
     {
+        $bookFromDB = Book::where('title', $title)->get();
+
+        if($bookFromDB != null) {
+            return $bookFromDB;
+        }
+
         $book = Wolnelektury::getBook($title);
 
         $data = [

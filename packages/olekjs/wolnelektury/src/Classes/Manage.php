@@ -24,6 +24,7 @@ class Manage
     {
         $name = str_replace(' ', '-', $name);
         $name = Str::lower($name);
+        $name = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $name);
 
         $url = "/books/{$name}";
 
@@ -38,22 +39,14 @@ class Manage
      */
     private function getHttpResponse($url)
     {
-        $url     = $this->mergeURL($url);
-        $headers = get_headers($url);
-        $code    = substr($headers[9], 9, 3);
+        $url = $this->mergeURL($url);
 
-        if ($code != '200') {
-            $data = [
-                'code'    => $code,
-                'message' => "Problem with API. Code {$code}",
-            ];
-
-            return $data;
+        try {
+            $response = json_decode(file_get_contents($url), true);
+            return $this->prepareResponse(collect($response));
+        } catch (Exception $e) {
+            return 'error';
         }
-
-        $response = json_decode(file_get_contents($url), true);
-
-        return $this->prepareResponse(collect($response));
     }
 
     /**

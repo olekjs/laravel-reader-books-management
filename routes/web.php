@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::group(['prefix' => 'read', 'as' => 'read.'], function () {
-        Route::get('', 'BookController@read')->name('index');
+        Route::get('{title}', 'BookController@read')->name('index');
     });
 
     Route::namespace ('Api')->group(function () {
