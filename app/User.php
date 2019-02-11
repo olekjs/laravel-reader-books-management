@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Post;
 use App\Models\Profile;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -31,6 +32,11 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class)->where('status', 1);
     }
 
     public function friendsOfMine()

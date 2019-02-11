@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        return view('home', [
+            'friends' => Auth::user()->friends,
+        ]);
     }
 
     public function searchBook()
